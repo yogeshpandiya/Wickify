@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wickify - Premium Forex Trading Signals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        main {
+            margin-top: 80px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 1rem 0;
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .features {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 5rem 0;
+            margin: 3rem 0;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #2a5298;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .signals-gallery {
+            padding: 5rem 0;
+            margin: 3rem 0;
+        }
+
+        .signals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .signal-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .signal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .signal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .signal-card:hover .signal-image {
+            transform: scale(1.1);
+        }
+
+        .signal-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 2rem;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .signal-card:hover .signal-overlay {
+            transform: translateY(0);
+        }
+
+        .signal-overlay h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .signal-overlay p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .profit {
+            background: #28a745;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffd700;
+            display: block;
+        }
+
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            border-radius: 50px;
+            padding: 15px 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        .contact {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 4rem 0;
+            margin: 3rem 0;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: #2a5298;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Wickify</div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Premium Forex Trading Signals</h1>
+                <p>Get accurate Gold trading signals delivered directly to you. Join hundreds of successful traders globally.</p>
+                <a href="#contact" class="cta-button">Start Trading Today</a>
+            </div>
+        </section>
+
+        <section class="signals-gallery">
+            <div class="container">
+                <h2 style="text-align: center; color: #fff; font-size: 2.5rem; margin-bottom: 3rem;">This could be you!!</h2>
+                
+                <div class="signals-grid">
+                    <div class="signal-card">
+                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Gold Trading Chart" class="signal-image">
+                        <div class="signal-overlay">
+                            <h3>Gold Signal +127 Pips</h3>
+                            <p>XAU/USD Buy Signal</p>
+                            <span class="profit">+$1,270 Profit</span>
+                        </div>
+                    </div>
+                    
+                    <div class="signal-card">
+                        <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Trading Platform" class="signal-image">
+                        <div class="signal-overlay">
+                            <h3>Gold Signal +89 Pips</h3>
+                            <p>XAU/USD Sell Signal</p>
+                            <span class="profit">+$890 Profit</span>
+                        </div>
+                    </div>
+                    
+                    <div class="signal-card">
+                        <img src="https://images.unsplash.com/photo-1642790106117-e829e14a795f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Trading Success" class="signal-image">
+                        <div class="signal-overlay">
+                            <h3>Gold Signal +156 Pips</h3>
+                            <p>XAU/USD Buy Signal</p>
+                            <span class="profit">+$1,560 Profit</span>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div></section>
+<div class="container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+    <div class="stat-card">
+        <span class="stat-number">500+</span>
+        <span>Active Traders</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-number">85%</span>
+        <span>Success Rate</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-number">24/7</span>
+        <span>Market Analysis</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-number">5+</span>
+        <span>Years Experience</span>
+    </div>
+</div>
+</section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2 style="text-align: center; color: #2a5298; font-size: 2.5rem; margin-bottom: 1rem;">Why Choose Us?</h2>
+                <p style="text-align: center; color: #666; font-size: 1.1rem;">Professional forex signals with focus on Gold trading for US market</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🥇</div>
+                        <h3>Gold Trading Expertise</h3>
+                        <p>Specialized signals for Gold (XAU/USD) trading with deep market analysis and timing precision.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>High Accuracy Signals</h3>
+                        <p>Our signals maintain an 85%+ success rate with clear entry, exit, and stop-loss levels.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>Learn & Earn</h3>
+                        <p>Tailored for beginer traders with training support in pattern analysis & market news analysis.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Instant Delivery</h3>
+                        <p>Get signals delivered instantly via WhatsApp, Telegram, or email - never miss an opportunity.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⏰</div>
+                        <h3>Real-Time Analysis</h3>
+                        <p>24/7 market monitoring with real-time technical and fundamental analysis updates.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Risk Management</h3>
+                        <p>Every signal includes proper risk management with recommended position sizing and stop losses.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Ready to Start Trading?</h2>
+                <p>Join our community of successful Gold traders and receive premium signals today.</p>
+                <p><strong>Specializing in Gold (XAU/USD) Trading Signals</strong></p>
+                <p>Contact us now to discuss your trading goals and get started with our premium signal service.</p>
+                <a href="https://wa.me/919685183979?text=Hi, I'm interested in your Gold trading signals service" class="cta-button" style="margin-top: 1rem;">Get Started Now</a>
+<div class="contact-info" style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center;">
+    <div class="contact-card" style="background: #fff; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+        <h3 style="color: #2a5298; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+            📍 Reach Out To Us..
+        </h3>
+        <p style="color: #666; line-height: 1.6; text-align: center;">
+            Apollo Premier
+            Vijay Nagar
+            Indore, India
+        </p>
+        <p style="color: #666; line-height: 1.6; text-align: center;">
+            ✉️ Email <a href="mailto:info@wickify.com" style="color: #2a5298; text-decoration: none; font-weight: bold;">info@wickify.com</a>
+            <br> 📞 Phone <a href="tel:+919685183979" style="color: #2a5298; text-decoration: none; font-weight: bold;">+91 9685183979</a>
+        </p>
+    </div>
+</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Wickify. All rights reserved. | Professional Forex Trading Signals</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Risk Warning: Trading forex and CFDs involves significant risk and may not be suitable for all investors.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919685183979?text=Hi, I'm interested in your Gold trading signals service" class="whatsapp-btn" target="_blank">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.964 9.964 0 001.333 4.993L2 22l5.232-1.237a9.981 9.981 0 004.774 1.218c5.506 0 9.989-4.478 9.99-9.984C21.996 6.491 17.518 2.007 12.012 2zm4.971 14.322c-.214.602-1.265 1.169-1.743 1.169-.478 0-.878-.114-1.265-.602-.386-.488-3.007-2.35-3.007-4.507 0-2.158 1.909-3.181 2.295-3.181.386 0 .602.114.743.387.14.273.602 1.507.652 1.62.05.114.083.273-.05.437-.133.165-.2.273-.386.487-.187.215-.386.478-.551.602-.165.125-.386.273-.165.602.22.329.602 1.265 1.265 2.044.663.779 1.241 1.023 1.527 1.137.287.114.487.083.652-.165.165-.248.714-.878.928-1.169.215-.29.43-.248.714-.149.287.1 1.794.878 2.108 1.023.313.146.522.22.602.387.08.165.08.602-.133 1.204z"/>
+        </svg>
+        WhatsApp
+    </a>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(30, 60, 114, 0.95)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
